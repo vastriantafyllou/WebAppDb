@@ -1,4 +1,5 @@
 
+using Serilog;
 using WebAppDb.Configuration;
 
 namespace WebAppDb
@@ -16,6 +17,12 @@ namespace WebAppDb
 
             // With this line:
             builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MapperConfig>());
+            
+            builder.Host.UseSerilog((context, config) =>
+            {
+                config.ReadFrom.Configuration(context.Configuration);
+            });
+            
             builder.Services.AddRazorPages();  
             
             
