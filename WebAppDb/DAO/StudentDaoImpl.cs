@@ -58,6 +58,7 @@ public class StudentDaoImpl : IStudentDao
         using SqlCommand command = new(sql, connection);
         command.Parameters.AddWithValue("@firstname", student.Firstname);
         command.Parameters.AddWithValue("@lastname", student.Lastname);
+        command.Parameters.AddWithValue("@id", student.Id);
         
         command.ExecuteNonQuery();
     }
